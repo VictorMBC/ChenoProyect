@@ -23,27 +23,35 @@
 		$atributo_link = 'class="link"';
 		$atributo_img = 'title="Cambiar la Imagen del Producto"';
 
+		//En este form se realizan los cambios de la tabla de busqueda por NIS
 		echo form_open('manage_products/delete');
 	    foreach($results as $result)
 	    {
-	       	$details = 
-	       		'Pantalla2: '.$result->pantalla.br(1).
-	       		'Ram: '.$result->ram.br(1).
-	       		'Procesador: '.$result->procesador.br(1).
-	       		'Disco Duro: '.$result->disco_duro;
+	    	//Este if valida si existe una imagen
 			if($result->imagen ==='')
 			{
 				$product_img = $img;		
 			}
+			//En caso de que no exista imagen se le asigna un icono por default
 			else
 			{
 				$product_img = img(base_url().'images/'.$result->imagen);
 			}
-				$this->table->add_row('<strong>'.$result->marca.'</strong>',								
-				$details,
-				anchor('manage_products/image?product='.$result->id, $product_img, $atributo_img),
-				anchor('manage_products/edit?product='.$result->id, $edit_img, $atributo_link ),
-				$delete  = form_checkbox('products[]',$result->id, FALSE)	                    
+				$this->table->add_row(
+					'<strong>'.$result->Fecha.'</strong>',								
+					$result->IdDispositivo,
+					$result->Pin,
+					$result->NoCel,
+					anchor('manage_products/image?product='.$result->Nis, $product_img, $atributo_img),
+					anchor('manage_products/image?product='.$result->Nis, $product_img, $atributo_img),
+					anchor('manage_products/image?product='.$result->Nis, $product_img, $atributo_img),
+					$result->Serie,
+					$result->Lec_Ant,
+					$result->Lect_Act,
+					$result->Consumo,
+					$result->Anomalia,
+					anchor('manage_products/edit?product='.$result->id, $edit_img, $atributo_link ),
+					$delete  = form_checkbox('products[]',$result->id, FALSE)	                    
 			);												 
 		} // fin foreach
 		echo $this->table->generate();  

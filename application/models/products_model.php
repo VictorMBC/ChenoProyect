@@ -9,39 +9,40 @@
 		  	$this->db->limit($pagination, $segment);
 		  	$query = $this->db->get('productos')->result();
 		     
-		  		//foreach ($query as $result)
-		  		//{
-					//if ($result->valores)
-					//{
-					//	$result->valores = explode(',',$result->valores);
-					//}
-				//}
+		  		foreach ($query as $result)
+		  		{
+					if ($result->Nis)
+					{
+						$result->Nis = explode(',',$result->Nis);
+					}
+				}
 			return $query;	      
 		}
 
-		function get($id)
+		function get($Nis)
 		{
-		   $query = $this->db->get_where('productos', array('Nis' => $id))->result();
+		   $query = $this->db->get_where('productos', array('Nis' => $Nis))->result();
 		   return $query;
 		}	
 
-		function update_product($id=NULL)
+		function update_product($Nis=NULL)
 		{
 			$data = array
 			(
-		    	'marca' => $this->input->post('marca'),
-		        'pantalla' => $this->input->post('pantalla'),
-		        'ram' => $this->input->post('ram'),
-		        'procesador' => $this->input->post('procesador'),
-		        'disco_duro' => $this->input->post('disco_duro'),
-		        'precio' => $this->input->post('precio'),
-		        'opcion' => $this->input->post('opcion'),
-		        'valores' => $this->input->post('atributos')
+		    	'Fecha' => $this->input->post('Fecha'),
+		        'IdDispositivo' => $this->input->post('Id Dispositivo'),
+		        'Pin' => $this->input->post('Pin'),
+		        'NoCel' => $this->input->post('N° Celular'),
+		        'Serie' => $this->input->post('N° Serie'),
+		        'Lec_Ant' => $this->input->post('Lectura Anterior'),
+		        'Lect_Act' => $this->input->post('Lectura Actual'),
+		        'Consumo' => $this->input->post('Consumo m³'),
+		        'Anomalia' => $this->input->post('Anomalia/Comentario')
 		    );
 					
-			if($id!==NULL)
+			if($Nis!==NULL)
 			{
-		  		$this->db->where('Nis', $id);
+		  		$this->db->where('Nis', $Nis);
 		  		return $this->db->update('productos', $data);
 			}
 			else
@@ -50,8 +51,8 @@
 			}
 		}
 
-		function delete_product($id)
+		function delete_product($Nis)
 		{
-			return $this->db->delete('productos', array('Nis' => $id));	
+			return $this->db->delete('productos', array('Nis' => $Nis));	
 		}
 	}

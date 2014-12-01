@@ -57,7 +57,7 @@ class Manage_products extends CI_Controller
 		$data['results'] = $this->Products_Model->get_products($pagination, $this->uri->segment(2));
 			
 		$this->load->view('admin/header_admin',$data);
-		$this->load->view('admin/products/products',$data);
+		$this->load->view('admin/products/products');
 		$this->load->view('front/footer');
 	}
 
@@ -166,5 +166,3 @@ function delete()
 	   		redirect('manage_products','location'); // ó redirect('manage_products', 'refresh');
 		}   
 	}// fin de la clase
-
-	

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2014 a las 00:06:49
+-- Tiempo de generación: 06-11-2014 a las 23:19:43
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -27,28 +27,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `productos` (
-  `Nis` int(11) NOT NULL,
-  `Fecha` date NOT NULL,
-  `IdDispositivo` varchar(50) NOT NULL,
-  `Pin` int(50) NOT NULL,
-  `NoCel` varchar(10) NOT NULL,
-  `Foto_Lectura` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Foto_Serie` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Foto_Recibo` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Serie` varchar(10) NOT NULL,
-  `Lec_Ant` int(10) NOT NULL,
-  `Lect_Act` int(10) NOT NULL,
-  `Consumo` int(10) NOT NULL,
-  `Anomalia` varchar(200) NOT NULL,
-  `Editar` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`Nis`, `Fecha`, `IdDispositivo`, `Pin`, `NoCel`, `Foto_Lectura`, `Foto_Serie`, `Foto_Recibo`, `Serie`, `Lec_Ant`, `Lect_Act`, `Consumo`, `Anomalia`, `Editar`) VALUES
-(1, '2014-11-27', 'JAHSDKJAHSKJD', 1212, '6622187274', '', '', '', '3827365283', 23, 23, 0, 'Medidor Frenado', '');
+`id` int(11) NOT NULL,
+  `marca` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `pantalla` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ram` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `procesador` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `disco_duro` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `precio` double(11,0) NOT NULL,
+  `opcion` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `valores` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `imagen` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -70,9 +59,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `username`, `rol`, `password`) VALUES
-(11, 'Victor', 'Bolaños', 'admin', 'Administrador', '21232f297a57a5a743894a0e4a801fc3'),
-(20, 'test', 'test', 'test', 'Lecturista', 'yolo'),
-(23, 'test2', 'test2', 'test2', 'Lecturista', 'yolo2');
+(11, 'Victor', 'Bolaños', 'admin', '21232f297a57a5a743894a0e4a801fc3', ''),
+(20, 'test', 'test', 'test', 'Lecturista', '098f6bcd4621d373cade4e832627b4f6'),
+(23, 'test2', 'test2', 'test2', 'Lecturista', 'ad0234829205b9033196ba818f7a872b');
 
 --
 -- Índices para tablas volcadas
@@ -82,7 +71,7 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `username`, `rol`, `password`) V
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
- ADD PRIMARY KEY (`Nis`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -94,6 +83,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
