@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2014 a las 23:14:34
+-- Tiempo de generación: 02-12-2014 a las 03:06:08
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -40,16 +40,18 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `Lect_Act` int(10) NOT NULL,
   `Consumo` int(10) NOT NULL,
   `Anomalia` varchar(200) NOT NULL,
-  `Editar` varchar(100) NOT NULL
+  `Editar` varchar(100) NOT NULL,
+  `lat` double NOT NULL,
+  `lon` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`Nis`, `Fecha`, `IdDispositivo`, `Pin`, `NoCel`, `Foto_Lectura`, `Foto_Serie`, `Foto_Recibo`, `Serie`, `Lec_Ant`, `Lect_Act`, `Consumo`, `Anomalia`, `Editar`) VALUES
-(1, '2014-11-27', 'JAHSDKJAHSKJD', 1212, '6622187274', '', '', '', '3827365283', 23, 23, 0, 'Medidor Frenado', ''),
-(2, '2014-11-30', 'JASJDKASJAJSHDK', 1334, '6622847459', '1', '2', '3', '8298273847', 111, 99, 0, 'Medidor volteado', '');
+INSERT INTO `productos` (`Nis`, `Fecha`, `IdDispositivo`, `Pin`, `NoCel`, `Foto_Lectura`, `Foto_Serie`, `Foto_Recibo`, `Serie`, `Lec_Ant`, `Lect_Act`, `Consumo`, `Anomalia`, `Editar`, `lat`, `lon`) VALUES
+(1, '2014-11-27', 'JAHSDKJAHSKJD', 1212, '6622187274', '', '', '', '3827365283', 23, 23, 0, 'Medidor Frenado', '', 29.12, -111),
+(2, '2014-11-30', 'JASJDKASJAJSHDK', 1334, '6622847459', '1', '2', '3', '8298273847', 111, 99, 0, 'Medidor volteado', '', 28.11, -110);
 
 -- --------------------------------------------------------
 

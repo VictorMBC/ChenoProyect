@@ -16,10 +16,6 @@
 					<input type="text" id="lat" name="lat" />
 				<br /><label>Longitud</label>
 					<input type="text" id="lon" name="lon" />
-				<br /><label>Nombre</label>
-					<input type="text" id="nom" name="nom" />
-				<br /><label>Descripción</label>
-					<input type="text" id="des" name="des">
 				<br /><button type="button" id="guardar">Guardar</button>
 			</form>
 		<?php echo $scripts;?>

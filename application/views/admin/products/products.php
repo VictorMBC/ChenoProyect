@@ -8,6 +8,12 @@
 		<?=anchor('manage_products/add/' ,'Insertar Lectura Manual', 'title="Agregar Producto"') ?>
 	</p>
 
+	<p align="left">
+	<label>Busqueda por Nis</label><br />
+	<input type="text" id="Nis" name="Nis" /><br />
+	<button type="button" id="guardar">Buscar</button><br />
+	</p>
+
 	<?php 
 		$edit_img = '<img src="'.base_url().'assets/img/edit.png"/>'; 
 		$img = '<img src="'. base_url().'assets/img/image.png"/>'; 

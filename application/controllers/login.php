@@ -49,11 +49,40 @@ class Login extends CI_Controller
 			$data['user'] = $this->session->userdata('user');  // = $this->session->userdata('user');
 			$data['scripts']='<script src="'.base_url('assets/js/jquery-1.11.1.min.js').'"></script>'.
 				'<script src="'.base_url('assets/js/bootstrap.js').'"></script>'.
-				'<script src="'.base_url('assets/js/mapa.js').'"></script>';			
+				'<script src="'.base_url('assets/js/mapa.js').'"></script>';
+				//$view=$this->load->view('admin', $data, TRUE);		
+				//$this->output->set_output($view);			
 			$this->load->view('admin/header_admin',$data);
             $this->load->view('admin/admin');
 			$this->load->view('front/footer');
 	}
+
+	//Esta funcion es para guardar la latitud, longitud, etc del mapa.
+	public function salvar() 
+		{		
+			$this->form_validation->set_rules('lat', 'Latitud');
+			$this->form_validation->set_rules('lon', 'Longitud');
+			$data=array();
+			if($this->form_validation->run()===TRUE) 
+				{					
+					$this->login_model->salvar();
+				}		
+			$this->jsonReturn($data);
+			}
+
+	//Esta funcion es para mostrar la informacion guardada del mapa
+	public function mostrar() 
+		{
+			$data=$this->login_model->mostrar();
+			$this->jsonReturn($data);
+		}
+
+	//Esta funcion es la eencargada del metodo Json que esta usando la aplicacion
+	private function jsonReturn($data) 
+		{
+			$this->output->set_content_type('application/json');
+			$this->output->set_output(json_encode($data));
+		}
 
 	//Esta funcion afecta el inicio de sesion
 	function _valid_login($username,$password)
@@ -88,33 +117,4 @@ class Login extends CI_Controller
         $this->session->sess_destroy(); 
 		redirect('login');		
 	}
-
-	//Esta funcion es para guardar la latitud, longitud, etc del mapa.
-	public function salvar() 
-		{		
-			$this->form_validation->set_rules('lat', 'Latitud');
-			$this->form_validation->set_rules('lon', 'Longitud');
-			$this->form_validation->set_rules('nom', 'Nombre');
-			$this->form_validation->set_rules('des', 'Descripcion');
-			$data=array();
-			if($this->form_validation->run()===TRUE) 
-				{					
-					$this->mapa_model->salvar();
-				}		
-			$this->jsonReturn($data);
-			}
-
-	//Esta funcion es para mostrar la informacion guardada del mapa
-	public function mostrar() 
-		{
-			$data=$this->mapa_model->mostrar();
-			$this->jsonReturn($data);
-		}
-
-	//Esta funcion es la eencargada del metodo Json que esta usando la aplicacion
-	private function jsonReturn($data) 
-		{
-			$this->output->set_content_type('application/json');
-			$this->output->set_output(json_encode($data));
-		}
 }
