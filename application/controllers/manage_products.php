@@ -23,12 +23,13 @@ class Manage_products extends CI_Controller
 	function index()
 	{
 		//aqui se realizan los cambios a busqueda por nis
+
 		$pagination = 6;
 	    //$config['base_url'] = base_url().'index.php/manage_products/index'; 	
 	    $config['base_url'] = base_url().'manage_products/index';  
 	    $config['total_rows'] = $this->db->get('productos')->num_rows();
 	    $config['per_page'] = $pagination;
-	    $config['num_links'] = 20; 
+	    $config['num_links'] = 20;
 	    $config['next_link'] = 'Siguiente »';
 	    $config['prev_link'] = '« Anterior';
 		
@@ -53,7 +54,8 @@ class Manage_products extends CI_Controller
 		$tmpl = array ( 'table_open'  => '<table border="1" id="table">' );
 		$this->table->set_template($tmpl); 
 	      	
-		$data['title'] = 'Busqueda por NIS'; 
+		$data['title'] = 'Busqueda por NIS';
+		
 		$data['results'] = $this->Products_Model->get_products($pagination, $this->uri->segment(2));
 			
 		$this->load->view('admin/header_admin',$data);
@@ -63,9 +65,9 @@ class Manage_products extends CI_Controller
 
 	function edit()
 	{
-		$id = $this->input->get('product'); 
+		$Nis = $this->input->get('Nis'); 
 		$data['title'] = 'Editar Producto'; 
-		$data['results'] = $this->Products_Model->get($id);
+		$data['results'] = $this->Products_Model->get($Nis);
 		
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/products/edit_product');
@@ -117,7 +119,7 @@ class Manage_products extends CI_Controller
 	function update()
 	{
 		$data['title'] = 'Editar Lectura';
-		$data['id'] = $this->input->post('id'); 
+		$data['Nis'] = $this->input->post('Nis'); 
 
 		if ($this->form_validation->run() == FALSE)
 		{			
@@ -127,7 +129,7 @@ class Manage_products extends CI_Controller
 		}
 		else
 		{
-			$insert = $this->Products_Model->update_product($this->input->post('id'));
+			$insert = $this->Products_Model->update_product($this->input->post('Nis'));
 		if($insert)
 		{
 			$data['title'] = 'La lectura se actualiz&oacute; correctamente.'; 

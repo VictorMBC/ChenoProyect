@@ -46,13 +46,43 @@
 			$data=array(
 				'latitud'=>$latitud,
 				'longitud'=>$longitud);
-			$this->db->insert('producto', $data);
+			$this->db->insert('productos', $data);
 		}	
+		public function buscar() 
+		{
+			$Nis=$_POST['Nis'];
+			$data=array(
+				'Nis'=>$Nis);
+			$query=$this->db->get_where('productos', array('Nis'=>$_POST['Nis']));
+			//$query=$this->db->get('productos', $data);
+			$data=array();
+			$data['extra']=$Nis;
+			if($results=$query->result()) 
+			{
+				$data['results']=array();			
+				foreach($results as $res) 
+				{
+					//print_r($res);
+					$data['results'][]=array(
+						'lat'=>$res->latitud,
+						'lon'=>$res->longitud);
+				}
+			}
+			else 
+			{
+				$data['results']='';
+			}
+
+			return $data;
+		}	
+
 	
 		//esta es la funcion encargada de mostrar la informacion del mapa en donde le asignemos
 		public function mostrar() 
 		{
-			$query=$this->db->query("SELECT lat,lon FROM productos WHERE Nis=1");
+			//$query=$this->db->get_where('productos', array('Nis'=>$_POST['Nis']))->result();
+			//$query=$this->db->query("SELECT 'latitud','longitud' FROM productos");
+			$query=$this->db->get('productos', $data);
 			$data=array();		
 			if($results=$query->result()) 
 			{
@@ -72,4 +102,3 @@
 	}
 }
 ?>
-	}

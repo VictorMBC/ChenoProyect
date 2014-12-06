@@ -1,6 +1,6 @@
 <?php 
 
-//pagina principal de logueo
+//controlador de la pagina principal de logueo
 
 class Login extends CI_Controller
 {
@@ -8,11 +8,12 @@ class Login extends CI_Controller
    function __construct() 
    { 
 		parent::__construct();
-		$this ->load->model('Login_Model');		
+		$this ->load->model('login_model');		
    }
    
+   	//Esta funcion define las reglas de validación para el inicio de sesion
 	function index()
-	{  // reglas de validación para el inicio de sesion
+	{ 
 
 	 //$this->output->enable_profiler(TRUE);
        $this->form_validation->set_rules('username', 'Usuario', 'required|xss_clean|callback__valid_login');
@@ -25,6 +26,7 @@ class Login extends CI_Controller
      
 		if ($this->form_validation->run() == FALSE)
 		{
+			//Aqui se le cambia el nombre a la aplicacion
 			$data['title'] = 'Nombre de Aplicacion';
 
 			$this->load->view('admin/login',$data);
@@ -37,8 +39,7 @@ class Login extends CI_Controller
 			// asignamos dos datos a la sesión --> (username y logued_in)									 
 			$this->session->set_userdata($data_user);
 			$this->load->helper('url');
-             redirect('login/principal/', 'refresh');
-				
+             redirect('login/principal/', 'refresh');	
 		}
   	}
 
@@ -58,17 +59,17 @@ class Login extends CI_Controller
 	}
 
 	//Esta funcion es para guardar la latitud, longitud, etc del mapa.
-	public function salvar() 
+	public function buscar() 
 		{		
 			$this->form_validation->set_rules('lat', 'Latitud');
 			$this->form_validation->set_rules('lon', 'Longitud');
 			$data=array();
 			if($this->form_validation->run()===TRUE) 
 				{					
-					$this->login_model->salvar();
+					$data=$this->login_model->buscar();
 				}		
 			$this->jsonReturn($data);
-			}
+		}
 
 	//Esta funcion es para mostrar la informacion guardada del mapa
 	public function mostrar() 
@@ -80,7 +81,7 @@ class Login extends CI_Controller
 	//Esta funcion es la eencargada del metodo Json que esta usando la aplicacion
 	private function jsonReturn($data) 
 		{
-			$this->output->set_content_type('application/json');
+			$this->output->set_content_type('application/assets/json');
 			$this->output->set_output(json_encode($data));
 		}
 
@@ -89,7 +90,7 @@ class Login extends CI_Controller
 	{ 
 	    $username = $this->input->post('username');
 	    $password = md5($this->input->post('password'));
-        return $this->Login_Model->valid_user($username,$password);
+        return $this->login_model->valid_user($username,$password);
 	}
 
 	//Esta funcion es el metodo ajax para conectarse a la sesion
@@ -102,7 +103,7 @@ class Login extends CI_Controller
 			{
 				$username = $this->input->post('username');
 					 
-				$this->Login_Model->valid_user_ajax($username);	
+				$this->login_model->valid_user_ajax($username);	
 			}
 		}
 		else

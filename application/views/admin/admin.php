@@ -7,21 +7,20 @@
 
 <style type="text/css">
 			body { height: 100%; }
-			#map_canvas { height: 500px; width: 99%;}			
+			#map_canvas { height: 417px; width: 99%;}			
 		</style>
-
-		<div id="map_canvas"></div>
-			<form method="post" id="forma">
-				<br /><label>Latitud</label>
-					<input type="text" id="lat" name="lat" />
-				<br /><label>Longitud</label>
-					<input type="text" id="lon" name="lon" />
+		<form method="post" id="forma" action="" align="left">
+				<!--<br /><label>Latitud</label>
+					<input type="text" id="lat" name="lat" />-->
+				<br /><label>Nis</label>
+					<input type="text" id="Nis" name="Nis" />
 				<br /><button type="button" id="guardar">Guardar</button>
 			</form>
+		<div id="map_canvas"></div>
+
 		<?php echo $scripts;?>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCFYus52BtDaA0Kdwqi8inbq6Nme0nZ2LI&sensor=FALSE"></script>
 		<p style="display: none;" id="ruta"><?php echo base_url();?></p>
-			
 
 <script>
 window.onload=function(){
