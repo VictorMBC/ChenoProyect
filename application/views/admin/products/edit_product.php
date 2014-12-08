@@ -4,93 +4,93 @@
 	(
 		'id' => 'form_login',
 		'class'=>'users'
-	); 
+	);
 
-	$marca = array
+	$IdDispositivo = array
 	(
-		'name'=>'marca',
-		'id'=>'marca',
+		'name'=>'ID Dispositivo',
+		'id'=>'IdDispositivo',
 		'class'=>'input',
-		'placeholder'=>'Marca',
-	    'value'=>set_value('marca'),
+		'placeholder'=>'ID Dispositivo',
+	    'value'=>set_value('IdDispositivo'),
 	    'size'=> '35'
 	);	
 
-	$pantalla = array
+	$Pin = array
 	(
-		'name'=>'pantalla',
-		'id'=>'pantalla',
+		'name'=>'Pin',
+		'id'=>'Pin',
 		'class'=>'input',
-		'placeholder'=>'Pantalla',
-	    'value'=>set_value('pantalla'),
+		'placeholder'=>'Pin',
+	    'value'=>set_value('Pin'),
 	    'size'=> '35'
 	);
 						  
-	$ram = array
+	$NoCel = array
 	(
-		'name'=>'ram',
-		'id'=>'ram',
+		'name'=>'NoCel',
+		'id'=>'NoCel',
 		'class'=>'input',
-		'placeholder'=>'Memoria Ram',
-	    'value'=>set_value('ram'), 'size'=> '35'
+		'placeholder'=>'N° Celular',
+	    'value'=>set_value('NoCel'), 'size'=> '35'
 	);	
 
-	$procesador = array
+	$Serie = array
 	(
-		'name'=>'procesador',
-		'id'=>'procesador',
+		'name'=>'Serie',
+		'id'=>'Serie',
 		'class'=>'input',
-		'placeholder'=>'Procesador',
-	    'value'=>set_value('procesador'),
+		'placeholder'=>'N° Serie',
+	    'value'=>set_value('Serie'),
 	    'size'=> '35'
 	);						  
 
-	$disco_duro = array
+	$Lec_Ant = array
 	(
-		'name'=>'disco_duro',
-		'id'=>'disco_duro',
+		'name'=>'Lec_Ant',
+		'id'=>'Lec_Ant',
 		'class'=>'input',
-		'placeholder'=>'Disco Duro',
-	    'value'=>set_value('disco_duro'),
+		'placeholder'=>'Lectura Anterior',
+	    'value'=>set_value('Lec_Ant'),
 	    'size'=> '35'
 	);	
 						  
-	$precio = array
+	$Lect_Act = array
 	(
-		'name'=>'precio',
-		'id'=>'precio',
+		'name'=>'Lect_Act',
+		'id'=>'Lect_Act',
 		'class'=>'input',
-		'placeholder'=>'Precio',
-	    'value'=>set_value('precio'),
+		'placeholder'=>'Lectura Actual',
+	    'value'=>set_value('Lect_Act'),
 	    'size'=> '35'
 	);					  
 
-	$opcion = array
+	$Consumo = array
 	(
-		'name'=>'opcion',
-		'id'=>'opcion',
+		'name'=>'Consumo',
+		'id'=>'Consumo',
 		'class'=>'input',
-		'placeholder'=>'Opci&oacute;n del atributo',
-	    'value'=>set_value('opcion'),
+		'placeholder'=>'Consumo m³',
+	    'value'=>set_value('Consumo'),
 	    'size'=> '35'
 	);	
 						  				  				  
 						  
-	$atributos = array
+	$Anomalia = array
 	(
-		'name'=>'atributos',
-		'id'=>'atributos',
+		'name'=>'Anomalia',
+		'id'=>'Anomalia',
 		'class'=>'input',
-		'placeholder'=>'Atributos del producto',
-	    'value'=>set_value('atributos'),
+		'placeholder'=>'Anomalia/Comentario',
+	    'value'=>set_value('Anomalia'),
 	    'size'=> '35'
-	);					  
-						  
-	$data = array
+	);
+
+	/*$data = array
 	(
-		'name'=>'id',
-		'value'=>set_value('id')
-	);					  
+		'name'=>'Nis',
+		'value'=>set_value('Nis')
+	);*/
 
 	if(validation_errors()){
 ?> 
@@ -106,71 +106,71 @@
 		foreach ($results as $result)
 		{
 	  	
-		   $id = $result->id;			 
-	       $marca['value'] = $result->marca;
-	       $pantalla['value'] = $result->pantalla;
-	       $ram['value'] = $result->ram;
-	       $procesador['value'] = $result->procesador;
-	       $disco_duro['value'] = $result->disco_duro;
-		   $precio['value'] = $result->precio;
-		   $opcion['value'] = $result->opcion;
-		   $atributos['value'] = $result->valores;		   	       
-    	}	 
+		   $Nis = $result->Nis;			 
+	       $IdDispositivo['value'] = $result->IdDispositivo;
+	       $Pin['value'] = $result->Pin;
+	       $NoCel['value'] = $result->NoCel;
+	       $Serie['value'] = $result->Serie;
+	       $Lec_Ant['value'] = $result->Lec_Ant;
+		   $Lect_Act['value'] = $result->Lect_Act;
+		   $Consumo['value'] = $result->Consumo;
+		   $Anomalia['value'] = $result->Anomalia;
+    	}
 	} 
 ?>
 
 <?=form_open('manage_products/update', $attributes);?>
 
 	<div class="padding">
-		<?=form_label('Marca');?>
+		<?=form_label('ID Dispositivo');?>
 	</div>
 	<div class="padding">
-		<?=form_input($marca)?>
+		<?=form_input($IdDispositivo)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Pantalla')?>
+		<?=form_label('Pin')?>
 	</div>
 	<div class="padding">
-		<?=form_input($pantalla)?>
+		<?=form_input($Pin)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Memoria Ram')?>
+		<?=form_label('N° Celular')?>
 	</div>
 	<div class="padding">
-		<?=form_input($ram)?>
+		<?=form_input($NoCel)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Procesador')?>
+		<?=form_label('N° Serie')?>
 	</div>
 	<div class="padding">
-		<?=form_input($procesador)?>
+		<?=form_input($Serie)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Disco duro')?>
+		<?=form_label('Lectura Anterior')?>
 	</div>
 	<div class="padding">
-		<?=form_input($disco_duro)?>
+		<?=form_input($Lec_Ant)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Precio')?>
+		<?=form_label('Lectura Actual')?>
 	</div>
 	<div class="padding">
-		<?=form_input($precio)?>
+		<?=form_input($Lect_Act)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Opci&oacute;n del atributo')?>
+		<?=form_label('Consumo m³')?>
 	</div>
 	<div class="padding">
-		<?=form_input($opcion)?>
+		<?=form_input($Consumo)?>
 	</div>
 	<div class="padding">
-		<?=form_label('Atributo(s)')?>
+		<?=form_label('Anomalia/Comentario')?>
 	</div>
 	<div class="padding">
-		<?=form_input($atributos)?>
+		<?=form_input($Anomalia)?>
 	</div>
 
-<?=form_hidden('id',$id)?>
+<!--?=form_hidden('id',$id)?-->
 
 <?=form_submit(array
 	(

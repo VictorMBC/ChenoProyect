@@ -12,7 +12,7 @@
 		  	//$query = $this->db->get_where('productos', array('Nis'=>$_POST['Nis']))->result();
 		     
 			return $query;	
-			$this->db->last_query();      
+			//$this->db->last_query();      
 		}
 
 		//Esta funcion es la que toma todos los valores dependiendo del Nis y los guarda en un query

@@ -132,7 +132,7 @@ class Manage_products extends CI_Controller
 			$insert = $this->Products_Model->update_product($this->input->post('Nis'));
 		if($insert)
 		{
-			$data['title'] = 'La lectura se actualiz&oacute; correctamente.'; 
+			$data['title'] = 'La lectura se actualizo correctamente.'; 
 			$this->load->view('admin/header_admin',$data);
 			$this->load->view('admin/success');
 			$this->load->view('front/footer');

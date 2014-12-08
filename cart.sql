@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2014 a las 03:06:08
+-- Tiempo de generación: 06-12-2014 a las 20:51:59
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `productos` (
-  `Nis` int(11) NOT NULL,
-  `Fecha` date NOT NULL,
+  `Nis` int(11) NOT NULL DEFAULT '0',
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `IdDispositivo` varchar(50) NOT NULL,
   `Pin` int(50) NOT NULL,
   `NoCel` varchar(10) NOT NULL,
@@ -41,17 +41,18 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `Consumo` int(10) NOT NULL,
   `Anomalia` varchar(200) NOT NULL,
   `Editar` varchar(100) NOT NULL,
-  `lat` double NOT NULL,
-  `lon` double NOT NULL
+  `latitud` varchar(15) NOT NULL,
+  `longitud` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`Nis`, `Fecha`, `IdDispositivo`, `Pin`, `NoCel`, `Foto_Lectura`, `Foto_Serie`, `Foto_Recibo`, `Serie`, `Lec_Ant`, `Lect_Act`, `Consumo`, `Anomalia`, `Editar`, `lat`, `lon`) VALUES
-(1, '2014-11-27', 'JAHSDKJAHSKJD', 1212, '6622187274', '', '', '', '3827365283', 23, 23, 0, 'Medidor Frenado', '', 29.12, -111),
-(2, '2014-11-30', 'JASJDKASJAJSHDK', 1334, '6622847459', '1', '2', '3', '8298273847', 111, 99, 0, 'Medidor volteado', '', 28.11, -110);
+INSERT INTO `productos` (`Nis`, `Fecha`, `IdDispositivo`, `Pin`, `NoCel`, `Foto_Lectura`, `Foto_Serie`, `Foto_Recibo`, `Serie`, `Lec_Ant`, `Lect_Act`, `Consumo`, `Anomalia`, `Editar`, `latitud`, `longitud`) VALUES
+(0, '2014-12-05 23:05:10', '', 0, '', '', '', '', '', 0, 0, 0, '', '', '0', '0'),
+(1, '2014-11-27 07:00:00', 'JAHSDKJAHSKJD', 1212, '6622187274', '4', '5', '6', '3827365283', 23, 23, 0, 'Medidor Frenado', '', '29.12', '-111'),
+(2, '2014-11-30 07:00:00', 'JASJDKASJAJSHDK', 1334, '6622847459', '1.jpg', '2.jpg', '3.jpg', '8298273847', 111, 99, 0, 'Medidor volteado', '', '28.11', '-110');
 
 -- --------------------------------------------------------
 
@@ -74,7 +75,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `username`, `rol`, `password`) VALUES
 (11, 'Victor', 'Bolaños', 'admin', 'Administrador', '21232f297a57a5a743894a0e4a801fc3'),
-(20, 'test', 'test', 'test', 'Lecturista', 'yolo'),
 (23, 'test2', 'test2', 'test2', 'Lecturista', 'yolo2');
 
 --

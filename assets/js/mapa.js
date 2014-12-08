@@ -36,10 +36,10 @@ function buscar()
 		dataType: 'json',
 		success: function(data) 
 		{		
-			console.log(data);	
+			//console.log(data);	
 				//mostrar();
 				var marcadores=data.results;			
-				console.log(marcadores);
+				//console.log(marcadores);
 				for(var cont=0; cont<marcadores.length; cont++) 
 				{
 					var lat=marcadores[cont].lat;
